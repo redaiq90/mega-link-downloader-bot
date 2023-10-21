@@ -9,7 +9,7 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     from config import Config
 
-uri = Config.REDIS_URI.split(":")
+uri = Config.REDIS_URI
 
 from urllib.parse import urlparse
 
