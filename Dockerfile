@@ -39,4 +39,5 @@ RUN mkdir -p /tmp/ && cd /tmp/ && git clone https://github.com/XMYSTERlOUSX/mega
 # Copying the content of the local src directory to the working directory
 COPY . .
 RUN pip3 install -r requirements.txt
-CMD python3 bot.py
+CMD ["python3", "bot.py"]
+
