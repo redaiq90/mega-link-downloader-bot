@@ -9,15 +9,24 @@ if bool(os.environ.get("WEBHOOK", False)):
 else:
     from config import Config
 
-INFO = Config.REDIS_URI.split(":")
+uri = Config.REDIS_URI.split(":")
+
+from urllib.parse import urlparse
+
+
+result = urlparse(uri)
+password = result.password
+hostname = result.hostname
+port = int(result.port)
 
 DB = redis.StrictRedis(
-    host=INFO[0],
-    port=INFO[1],
-    password=Config.REDIS_PASS,
+    host=hostname,
+    port=port,
+    password=password,
     charset="utf-8",
     decode_responses=True,
 )
+
 
 def get_stuff(WHAT):
     n = []
